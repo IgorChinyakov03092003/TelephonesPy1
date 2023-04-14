@@ -141,20 +141,23 @@ while True:
         People.append(Human(name,age,money)) 
         print()
     if(cmd==5):
-        h = int(input("Enter human NUM: ")) 
-        while((h-1<0) or (h-1>=len(People))): 
-            print("Not existing human!") 
+        if(len(Models) == 0):
+            print("No models available!") 
+        else:
             h = int(input("Enter human NUM: ")) 
+            while((h-1<0) or (h-1>=len(People))): 
+                print("Not existing human!") 
+                h = int(input("Enter human NUM: ")) 
         
-        t = int(input("Enter telephone NUM: ")) 
-        while((t-1<0) or (t-1>=len(Models))): 
-            print("Not existing telephone!") 
             t = int(input("Enter telephone NUM: ")) 
+            while((t-1<0) or (t-1>=len(Models))): 
+                print("Not existing telephone!") 
+                t = int(input("Enter telephone NUM: ")) 
 
-        l0 = len(People[h-1].telephones)
-        People[h-1].add_telephone(Models[t-1]) 
-        if(len(People[h-1].telephones) > l0):
-            Models.remove(Models[t-1])
+            l0 = len(People[h-1].telephones)
+            People[h-1].add_telephone(Models[t-1]) 
+            if(len(People[h-1].telephones) > l0):
+                Models.remove(Models[t-1])
         
     if(cmd==6):
         delHums=[]
